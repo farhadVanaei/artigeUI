@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ArtigeUI</title>
+
+    <meta name="author" content="Rome">
+
+    <link href='{% static "css/bootstrap.css" %}' rel="stylesheet">
+    <link href='{% static "css/owl.carousel.min.css" %}' rel="stylesheet">
+    <link href='{% static "css/owl.theme.default.min.css" %}' rel="stylesheet">
+    <link href='{% static "css/font-awesome.css" %}' rel="stylesheet">
+    <link href='{% static "css/style.css" %}' rel="stylesheet">
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <br/>
+            {% for post in posts %}
+            <div class="jumbotron">
+                <h2>
+                    {{post.title}}
+                </h2>
+                <p>
+                <div class="owl-carousel">
+                    {% for img_addr in post.array_images %}
+                    <img src="{% static img_addr %}"/>
+                    {% endfor %}
+                </div>
+                </p>
+                <p>
+                    {{post.description}}
+                </p>
+                <hr/>
+                <!--<div class="aaa">-->
+                <!--<a href=""><i class="fa fa-heart-o"></i> like</a>-->
+                <!--<a href=""> <i class="fa fa-comment-o"></i>Comment </a>-->
+                <!--<a href=""> <i class="fa fa-share"></i>Share</a>-->
+                <!--</div>-->
+                {% for tag in post.array_tags %}
+                <a href="{{tag}}">{{tag}}</a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
